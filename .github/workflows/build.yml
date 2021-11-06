@@ -1,4 +1,4 @@
-name: Get Epic Game
+name: Test build for m1 on GitHub
 
 on:
   push:
@@ -8,10 +8,16 @@ jobs:
   build:
     runs-on: macos-11
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v2
 
-      - name: compile
+      - name: Compile
         run: |
          make 
+
+      - name: Upload for test on m1 machine
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-me-on-m1
+          path: test
 
